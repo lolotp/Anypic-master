@@ -32,7 +32,7 @@ static const CGFloat kPAPCellInsetWidth = 20.0f;
 @implementation PAPPhotoDetailsViewController
 
 @synthesize commentTextField;
-@synthesize photo, headerView;
+@synthesize photo, headerView, likersQueryInProgress;
 
 #pragma mark - Initialization
 
