@@ -92,7 +92,8 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     if ([MFMailComposeViewController canSendMail] || [MFMessageComposeViewController canSendText]) {
         self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 67)];
         [self.headerView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundFindFriendsCell.png"]]];
-        UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        /*UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [clearButton setBackgroundColor:[UIColor clearColor]];
         [clearButton addTarget:self action:@selector(inviteFriendsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [clearButton setFrame:self.headerView.frame];
@@ -108,6 +109,24 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
         UIImageView *separatorImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SeparatorTimeline.png"]];
         [separatorImage setFrame:CGRectMake(0, self.headerView.frame.size.height-2, 320, 2)];
         [self.headerView addSubview:separatorImage];
+        [self.tableView setTableHeaderView:self.headerView];*/
+        
+        UIButton *clearButton2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [clearButton2 setBackgroundColor:[UIColor clearColor]];
+        [clearButton2 addTarget:self action:@selector(addFriendButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [clearButton2 setFrame:self.headerView.frame];
+        [self.headerView addSubview:clearButton2];
+        NSString *inviteString2 = @"Add friend";
+        CGSize inviteStringSize2 = [inviteString2 sizeWithFont:[UIFont boldSystemFontOfSize:18] constrainedToSize:CGSizeMake(310, CGFLOAT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
+        UILabel *inviteLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(10, (self.headerView.frame.size.height-inviteStringSize2.height)/2, inviteStringSize2.width, inviteStringSize2.height)];
+        [inviteLabel2 setText:inviteString2];
+        [inviteLabel2 setFont:[UIFont boldSystemFontOfSize:18]];
+        [inviteLabel2 setTextColor:[UIColor colorWithRed:87.0f/255.0f green:72.0f/255.0f blue:49.0f/255.0f alpha:1.0]];
+        [inviteLabel2 setBackgroundColor:[UIColor clearColor]];
+        [self.headerView addSubview:inviteLabel2];
+        UIImageView *separatorImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SeparatorTimeline.png"]];
+        [separatorImage2 setFrame:CGRectMake(0, self.headerView.frame.size.height-2, 320, 2)];
+        [self.headerView addSubview:separatorImage2];
         [self.tableView setTableHeaderView:self.headerView];
     }
 }
@@ -406,6 +425,21 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     }
 
     [self presentModalViewController:addressBook animated:YES];
+}
+
+- (void)addFriendButtonAction:(id)sender {
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add friend!" message:@"Please enter your friend ID:" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    UITextField * alertTextField = [alert textFieldAtIndex:0];
+    alertTextField.keyboardType = UIKeyboardTypeNumberPad;
+    alertTextField.placeholder = @"Enter your friend ID";
+    [alert show];
+    //[alert release];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
+    
 }
 
 - (void)followAllFriendsButtonAction:(id)sender {
