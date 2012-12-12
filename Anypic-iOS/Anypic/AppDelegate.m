@@ -411,7 +411,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     // Unsubscribe from push notifications by clearing the channels key (leaving only broadcast enabled).
-    [[PFInstallation currentInstallation] setObject:@[@""] forKey:kPAPInstallationChannelsKey];
+    [[PFInstallation currentInstallation] setObject:[NSArray arrayWithObject:@""] forKey:kPAPInstallationChannelsKey];
     [[PFInstallation currentInstallation] removeObjectForKey:kPAPInstallationUserKey];
     [[PFInstallation currentInstallation] saveInBackground];
     
