@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "Anypic": {
+            "applicationId": "YOUR_APPLICATION_ID", 
+            "masterKey": "YOUR_MASTER_KEY"
+        }, 
+        "_default": {
+            "link": "Anypic"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.0.16"
+    }
+}
