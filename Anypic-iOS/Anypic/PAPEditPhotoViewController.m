@@ -9,6 +9,7 @@
 #import "PAPEditPhotoViewController.h"
 #import "PAPPhotoDetailsFooterView.h"
 #import "UIImage+ResizeAdditions.h"
+#import "PAWAppDelegate.h"
 
 @interface PAPEditPhotoViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -197,6 +198,8 @@
         return;
     }
     
+    PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    CLLocationCoordinate2D currentCoordinate = appDelegate.currentLocation.coordinate;
     // both files have finished uploading
     
     // create a photo object
@@ -204,6 +207,7 @@
     [photo setObject:[PFUser currentUser] forKey:kPAPPhotoUserKey];
     [photo setObject:self.photoFile forKey:kPAPPhotoPictureKey];
     [photo setObject:self.thumbnailFile forKey:kPAPPhotoThumbnailKey];
+    [photo setObject:currentCoordinate forKey:kPAPPhotoCoordinates];
     
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];

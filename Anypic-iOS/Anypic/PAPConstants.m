@@ -76,7 +76,8 @@ NSString *const kPAPPhotoClassKey = @"Photo";
 NSString *const kPAPPhotoPictureKey         = @"image";
 NSString *const kPAPPhotoThumbnailKey       = @"thumbnail";
 NSString *const kPAPPhotoUserKey            = @"user";
-NSString *const kPAPPhotoOpenGraphIDKey    = @"fbOpenGraphID";
+NSString *const kPAPPhotoOpenGraphIDKey     = @"fbOpenGraphID";
+NSString *const kPAPPhotoCoordinates        = @"coordinates";
 
 
 #pragma mark - Cached Photo Attributes

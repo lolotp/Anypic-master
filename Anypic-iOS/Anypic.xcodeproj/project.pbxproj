@@ -177,6 +177,7 @@
 		C78BB8D716787E1B004F86D6 /* PAWWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7516787988006AE695 /* PAWWelcomeViewController.xib */; };
 		C78BB8D916787E1E004F86D6 /* PAWNewUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7B167879B8006AE695 /* PAWNewUserViewController.xib */; };
 		C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D78167879B6006AE695 /* PAWLoginViewController.xib */; };
+		C7C8BA1C1678AD8A00BB9FA6 /* PAWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -397,6 +398,8 @@
 		C7182D7C167879C5006AE695 /* hackitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hackitlogo.png; sourceTree = SOURCE_ROOT; };
 		C7182D8316787AB2006AE695 /* PAWActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAWActivityView.h; sourceTree = SOURCE_ROOT; };
 		C7182D8416787AB3006AE695 /* PAWActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAWActivityView.m; sourceTree = SOURCE_ROOT; };
+		C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PAWAppDelegate.h; path = Anypic/PAWAppDelegate.h; sourceTree = SOURCE_ROOT; };
+		C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAWAppDelegate.m; path = Anypic/PAWAppDelegate.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +490,8 @@
 				C4A6D87B157859AA009FE621 /* PAPCache.m */,
 				C4B60864155B085600EFA90C /* Resources */,
 				09ABC07813A1D52D009C3FCF /* Supporting Files */,
+				C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */,
+				C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */,
 			);
 			name = Anypic;
 			path = ParseStarterProject;
@@ -1048,6 +1053,7 @@
 				C4A6D87C157859AA009FE621 /* PAPCache.m in Sources */,
 				C4A6A246158FF842003F64A8 /* MBProgressHUD.m in Sources */,
 				C47DDDE61592761F002114F6 /* Reachability.m in Sources */,
+				C7C8BA1C1678AD8A00BB9FA6 /* PAWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

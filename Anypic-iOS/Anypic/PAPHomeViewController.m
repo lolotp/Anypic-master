@@ -11,17 +11,36 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
+#import "PAWAppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface PAPHomeViewController ()
+
+@property (nonatomic, strong) CLLocationManager *_locationManager;
 @property (nonatomic, strong) PAPSettingsActionSheetDelegate *settingsActionSheetDelegate;
 @property (nonatomic, strong) UIView *blankTimelineView;
+@property (nonatomic, assign) BOOL mapPannedSinceLocationUpdate;
+
+
+- (void)startStandardUpdates;
+
+// CLLocationManagerDelegate methods:
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error;
+
 @end
 
 @implementation PAPHomeViewController
+@synthesize mapView;
+@synthesize _locationManager = locationManager;
 @synthesize firstLaunch;
 @synthesize settingsActionSheetDelegate;
 @synthesize blankTimelineView;
-
+@synthesize mapPannedSinceLocationUpdate;
 
 #pragma mark - UIViewController
 
@@ -38,9 +57,62 @@
     button.frame = CGRectMake( 33.0f, 96.0f, 253.0f, 173.0f);
     [button setBackgroundImage:[UIImage imageNamed:@"HomeTimelineBlank.png"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(inviteFriendsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.blankTimelineView addSubview:button];
+    //[self.blankTimelineView addSubview:button];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationDidChange:) name:kPAWLocationChangeNotification object:nil];
+    
+    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.332495, -122.029095), MKCoordinateSpanMake(0.008516, 0.021801));
+	self.mapPannedSinceLocationUpdate = NO;
+    [self startStandardUpdates];
 }
 
+- (void)startStandardUpdates {
+	if (nil == locationManager) {
+		locationManager = [[CLLocationManager alloc] init];
+	}
+    
+	locationManager.delegate = self;
+	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+	// Set a movement threshold for new events.
+	locationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters;
+    
+	[locationManager startUpdatingLocation];
+    
+	CLLocation *currentLocation = locationManager.location;
+	if (currentLocation) {
+		PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+		appDelegate.currentLocation = currentLocation;
+	}
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+    
+	PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	appDelegate.currentLocation = newLocation;
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+	NSLog(@"%s", __PRETTY_FUNCTION__);
+	NSLog(@"Error: %@", [error description]);
+    
+	if (error.code == kCLErrorDenied) {
+		[locationManager stopUpdatingLocation];
+	} else if (error.code == kCLErrorLocationUnknown) {
+		// todo: retry?
+		// set a timer for five seconds to cycle location, and if it fails again, bail and tell the user.
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error retrieving location"
+		                                                message:[error description]
+		                                               delegate:nil
+		                                      cancelButtonTitle:nil
+		                                      otherButtonTitles:@"Ok", nil];
+		[alert show];
+	}
+}
 
 #pragma mark - PFQueryTableViewController
 
