@@ -17,6 +17,7 @@
 		09ABC07613A1D52D009C3FCF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09ABC07513A1D52D009C3FCF /* CoreGraphics.framework */; };
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
+		676F161D1678C501002CBD96 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676F161C1678C500002CBD96 /* MapKit.framework */; };
 		67E7699B16788EAC006112B6 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7699A16788EAC006112B6 /* Button.png */; };
 		74636BF31578281E00B44132 /* PAPFindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74636BF21578281E00B44132 /* PAPFindFriendsCell.m */; };
 		747FC485156FFF74003349E1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 747FC484156FFF74003349E1 /* PAPConstants.m */; };
@@ -193,6 +194,7 @@
 		09ABC07513A1D52D009C3FCF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		676F161C1678C500002CBD96 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		67E7699A16788EAC006112B6 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = SOURCE_ROOT; };
 		74636BF11578281E00B44132 /* PAPFindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PAPFindFriendsCell.h; path = AnyPic/PAPFindFriendsCell.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		74636BF21578281E00B44132 /* PAPFindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PAPFindFriendsCell.m; path = AnyPic/PAPFindFriendsCell.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -407,12 +409,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				676F161D1678C501002CBD96 /* MapKit.framework in Frameworks */,
+				C4A8949C15587CA600DC57D3 /* CoreLocation.framework in Frameworks */,
 				C49F5860160285CC0027383F /* Parse.framework in Frameworks */,
 				C4CD219915ED790500BC387F /* libsqlite3.dylib in Frameworks */,
 				74B108AB156D7CC2005B421C /* AddressBook.framework in Frameworks */,
 				74B108A9156D7510005B421C /* MessageUI.framework in Frameworks */,
 				74B108A7156D7509005B421C /* AddressBookUI.framework in Frameworks */,
-				C4A8949C15587CA600DC57D3 /* CoreLocation.framework in Frameworks */,
 				092354B713A1D83C00DA740F /* MobileCoreServices.framework in Frameworks */,
 				C4217BC01552230500CD3A47 /* AVFoundation.framework in Frameworks */,
 				2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */,
@@ -451,6 +454,7 @@
 		09ABC07013A1D52D009C3FCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				676F161C1678C500002CBD96 /* MapKit.framework */,
 				C4CD219815ED790500BC387F /* libsqlite3.dylib */,
 				099CCEAC13F9E3760039A464 /* libz.1.1.3.dylib */,
 				C49F585F160285CC0027383F /* Parse.framework */,

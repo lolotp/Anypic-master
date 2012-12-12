@@ -11,7 +11,7 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
-#import "PAWAppDelegate.h"
+#import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface PAPHomeViewController ()
@@ -31,6 +31,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error;
+
+// NSNotification callbacks
+- (void)distanceFilterDidChange:(NSNotification *)note;
+- (void)locationDidChange:(NSNotification *)note;
 
 @end
 
@@ -80,7 +84,7 @@
     
 	CLLocation *currentLocation = locationManager.location;
 	if (currentLocation) {
-		PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+		AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 		appDelegate.currentLocation = currentLocation;
 	}
 }
@@ -90,7 +94,7 @@
            fromLocation:(CLLocation *)oldLocation {
 	NSLog(@"%s", __PRETTY_FUNCTION__);
     
-	PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 	appDelegate.currentLocation = newLocation;
 }
 
@@ -151,4 +155,32 @@
     PAPFindFriendsViewController *detailViewController = [[PAPFindFriendsViewController alloc] init];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
+
+- (void)locationDidChange:(NSNotification *)note {
+	AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	
+	// If they panned the map since our last location update, don't recenter it.
+	if (!self.mapPannedSinceLocationUpdate) {
+		// Set the map's region centered on their new location at 2x filterDistance
+		MKCoordinateRegion newRegion = MKCoordinateRegionMakeWithDistance(appDelegate.currentLocation.coordinate, appDelegate.filterDistance * 2, appDelegate.filterDistance * 2);
+		
+		BOOL oldMapPannedValue = self.mapPannedSinceLocationUpdate;
+		[mapView setRegion:newRegion animated:YES];
+		self.mapPannedSinceLocationUpdate = oldMapPannedValue;
+	} // else do nothing.
+	
+	// If we haven't drawn the search radius on the map, initialize it.
+	/*if (self.searchRadius == nil) {
+		self.searchRadius = [[PAWSearchRadius alloc] initWithCoordinate:appDelegate.currentLocation.coordinate radius:appDelegate.filterDistance];
+		[mapView addOverlay:self.searchRadius];
+	} else {
+		self.searchRadius.coordinate = appDelegate.currentLocation.coordinate;
+	}*/
+	
+	// Update the map with new pins:
+	//[self queryForAllPostsNearLocation:appDelegate.currentLocation withNearbyDistance:appDelegate.filterDistance];
+	// And update the existing pins to reflect any changes in filter distance:
+	//[self updatePostsForLocation:appDelegate.currentLocation withNearbyDistance:appDelegate.filterDistance];
+}
+
 @end

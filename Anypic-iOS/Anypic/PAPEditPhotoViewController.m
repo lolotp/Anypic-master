@@ -200,6 +200,8 @@
     
     PAWAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     CLLocationCoordinate2D currentCoordinate = appDelegate.currentLocation.coordinate;
+	PFGeoPoint *currentPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude
+												longitude:currentCoordinate.longitude];
     // both files have finished uploading
     
     // create a photo object
@@ -207,7 +209,7 @@
     [photo setObject:[PFUser currentUser] forKey:kPAPPhotoUserKey];
     [photo setObject:self.photoFile forKey:kPAPPhotoPictureKey];
     [photo setObject:self.thumbnailFile forKey:kPAPPhotoThumbnailKey];
-    [photo setObject:currentCoordinate forKey:kPAPPhotoCoordinates];
+    [photo setObject:currentPoint forKey:kPAPPhotoCoordinates];
     
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
