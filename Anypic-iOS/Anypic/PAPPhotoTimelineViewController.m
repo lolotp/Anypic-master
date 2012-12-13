@@ -260,51 +260,48 @@
     followingActivitiesQuery.cachePolicy = kPFCachePolicyNetworkOnly;
     followingActivitiesQuery.limit = 1000;
     
+    PFQuery *friendQuery = [PFQuery queryWithClassName:self.className];
+    [friendQuery whereKey:kPAPPhotoUserKey matchesKey:kPAPActivityToUserKey inQuery:followingActivitiesQuery];
+    //[friendQuery includeKey:kPAWParseUserKey];
+    
+    
+    PFQuery *selfQuery = [PFQuery queryWithClassName:self.className];
+    [selfQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser] ];
+    //[selfQuery whereKeyExists:kPAPPhotoPictureKey];
+    //[selfQuery includeKey:kPAWParseUserKey];
+    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects: friendQuery, selfQuery, nil]];
+    //[query includeKey:kPAPPhotoUserKey];
+    //[query orderByDescending:@"createdAt"];
+    
+    
+    
     PFQuery *locationQuery = [PFQuery queryWithClassName:self.className];
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    CLLocation *currentLocation = appDelegate.currentLocation;
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:currentLocation.coordinate.latitude
+                                               longitude:currentLocation.coordinate.longitude];
+    CLLocationAccuracy filterDistance = appDelegate.filterDistance;
+    [locationQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
+         withinKilometers:filterDistance / kPAWMetersInAKilometer];
+    [locationQuery whereKey:@"objectId" matchesKey:@"objectId" inQuery:query];
+    [locationQuery includeKey:kPAWParseUserKey];
+    [locationQuery orderByDescending:@"createdAt"];
+    
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if ([self.objects count] == 0) {
         locationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
-    
-    // Query for posts near our current location.
-    
-    // Get our current location:
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    CLLocation *currentLocation = appDelegate.currentLocation;
-    CLLocationAccuracy filterDistance = appDelegate.filterDistance;
-    
-    // And set the query to look by location
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:currentLocation.coordinate.latitude
-                                               longitude:currentLocation.coordinate.longitude];
-    [locationQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
-   withinKilometers:filterDistance / kPAWMetersInAKilometer];
-    [locationQuery whereKey:kPAPPhotoUserKey matchesKey:kPAPActivityToUserKey inQuery:followingActivitiesQuery];
-    [locationQuery includeKey:kPAWParseUserKey];
-    
-    [locationQuery orderByDescending:@"createdAt"];
-    return locationQuery;
-    PFQuery *selfQuery = [PFQuery queryWithClassName:self.className];
-    [selfQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser] ];
-    //[selfQuery whereKeyExists:kPAPPhotoPictureKey];
-    //[selfQuery includeKey:kPAWParseUserKey];
-    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects: locationQuery, selfQuery, nil]];
-    [query includeKey:kPAPPhotoUserKey];
-    [query orderByDescending:@"createdAt"];
-    
     // A pull-to-refresh should always trigger a network request.
-    [query setCachePolicy:kPFCachePolicyNetworkOnly];
+    [locationQuery setCachePolicy:kPFCachePolicyNetworkOnly];
     
-    // If no objects are loaded in memory, we look to the cache first to fill the table
-    // and then subsequently do a query against the network.
-    //
     // If there is no network connection, we will hit the cache first.
     if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
-        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+        [locationQuery setCachePolicy:kPFCachePolicyCacheThenNetwork];
     }
-     return query;
-    //return selfQuery;
+    
+    return locationQuery;
 }
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
