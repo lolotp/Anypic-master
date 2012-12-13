@@ -428,7 +428,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
 }
 
 - (void)addFriendButtonAction:(id)sender {
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Add friend!" message:@"Please enter your friend ID:" delegate:self cancelButtonTitle:@"Add" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Find friend!" message:@"Please enter your friend ID:" delegate:self cancelButtonTitle:@"Find" otherButtonTitles:nil];
     alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField * alertTextField = [alert textFieldAtIndex:0];
     alertTextField.keyboardType = UIKeyboardTypeNumberPad;
@@ -446,13 +446,16 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     //NSLog(@"%d", [userList count]);
     if ([userList count] > 0){
         PFUser *cellUser = (PFUser*)[userList objectAtIndex:0];
-        [PAPUtility followUserEventually:cellUser block:^(BOOL succeeded, NSError *error) {
+        /*[PAPUtility followUserEventually:cellUser block:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:PAPUtilityUserFollowingChangedNotification object:nil];
             }
-        }];
+        }];*/
+        PAPAccountViewController *accountViewController = [[PAPAccountViewController alloc] initWithStyle:UITableViewStylePlain];
+        [accountViewController setUser:cellUser];
+        [self.navigationController pushViewController:accountViewController animated:YES];
     }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Following friend failed"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Finding friend failed"
                                                         message:@"It seems that no such users exist."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
