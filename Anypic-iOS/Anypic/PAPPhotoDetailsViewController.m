@@ -260,7 +260,11 @@ static const CGFloat kPAPCellInsetWidth = 20.0f;
                     }
                 }
                 
-                [channelSet addObject:[[self.photo objectForKey:kPAPPhotoUserKey] objectForKey: kPAPUserPrivateChannelKey]];
+                /*NSLog(@"%@",[self.photo objectId]);
+                NSLog(@"%@",[[self.photo objectForKey:kPAPPhotoUserKey] objectId]);
+                NSLog(@"%@",[[[self.photo objectForKey:kPAPPhotoUserKey] objectForKey:kPAPUserPrivateChannelKey] objectId]);*/
+                if ([[self.photo objectForKey:kPAPPhotoUserKey] objectForKey: kPAPUserPrivateChannelKey] != nil)
+                    [channelSet addObject:[[self.photo objectForKey:kPAPPhotoUserKey] objectForKey: kPAPUserPrivateChannelKey]];
 
                 if (channelSet.count > 0) {
                     NSString *alert = [NSString stringWithFormat:@"%@: %@", [PAPUtility firstNameForDisplayName:[[PFUser currentUser] objectForKey:kPAPUserDisplayNameKey]], trimmedComment];
