@@ -22,13 +22,15 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 #import "PAPPhotoDetailsViewController.h"
 
 #import "PAWWelcomeViewController.h"
+#import "PAWWallViewController.h"
 
 @interface AppDelegate () {
     NSMutableData *_data;
     BOOL firstLaunch;
 }
 
-@property (nonatomic, strong) PAPHomeViewController *homeViewController;
+//@property (nonatomic, strong) PAPHomeViewController *homeViewController;
+@property (nonatomic, strong) PAWWallViewController *homeViewController;
 @property (nonatomic, strong) PAPActivityFeedViewController *activityViewController;
 //@property (nonatomic, strong) PAPWelcomeViewController *welcomeViewController;
 @property (nonatomic, strong) PAWWelcomeViewController *welcomeViewController;
@@ -319,7 +321,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
                     [self.hud setDimBackground:YES];
                     [self.hud setLabelText:@"Following Friends"];
                 } else {
-                    [self.homeViewController loadObjects];
+                    [self.homeViewController.wallPostsTableViewController loadObjects];
                 }
             }
         }
@@ -393,8 +395,9 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 
 - (void)presentTabBarController {    
     self.tabBarController = [[PAPTabBarController alloc] init];
-    self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.homeViewController setFirstLaunch:firstLaunch];
+    //self.homeViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
+	self.homeViewController = [[PAWWallViewController alloc] initWithNibName:nil bundle:nil];
+    [self.homeViewController.wallPostsTableViewController setFirstLaunch:firstLaunch];
     self.activityViewController = [[PAPActivityFeedViewController alloc] initWithStyle:UITableViewStylePlain];
     
     UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:self.homeViewController];
@@ -533,7 +536,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
                 // check if this photo is already available locally.
 
                 PFObject *targetPhoto = [PFObject objectWithoutDataWithClassName:kPAPPhotoClassKey objectId:photoObjectId];
-                for (PFObject *photo in self.homeViewController.objects) {
+                for (PFObject *photo in self.homeViewController.wallPostsTableViewController.objects) {
                     if ([photo.objectId isEqualToString:photoObjectId]) {
                         NSLog(@"Found a local copy");
                         targetPhoto = photo;
@@ -575,7 +578,7 @@ static NSString * const defaultsLocationKey = @"currentLocation";
 - (void)autoFollowTimerFired:(NSTimer *)aTimer {
     [MBProgressHUD hideHUDForView:self.navController.presentedViewController.view animated:YES];
     [MBProgressHUD hideHUDForView:self.homeViewController.view animated:YES];
-    [self.homeViewController loadObjects];
+    [self.homeViewController.wallPostsTableViewController loadObjects];
 }
 
 - (BOOL)shouldProceedToMainInterface:(PFUser *)user {
@@ -608,10 +611,10 @@ static NSString * const defaultsLocationKey = @"currentLocation";
     NSLog(@"Reachability changed: %@", curReach);
     networkStatus = [curReach currentReachabilityStatus];
     
-    if ([self isParseReachable] && [PFUser currentUser] && self.homeViewController.objects.count == 0) {
+    if ([self isParseReachable] && [PFUser currentUser] && self.homeViewController.wallPostsTableViewController.objects.count == 0) {
         // Refresh home timeline on network restoration. Takes care of a freshly installed app that failed to load the main timeline under bad network conditions.
         // In this case, they'd see the empty timeline placeholder and have no way of refreshing the timeline unless they followed someone.
-        [self.homeViewController loadObjects];
+        [self.homeViewController.wallPostsTableViewController loadObjects];
     }
 }
 

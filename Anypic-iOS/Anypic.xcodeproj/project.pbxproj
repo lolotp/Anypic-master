@@ -18,6 +18,11 @@
 		09BEF34C13D51C3F001BBCDB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BEF34B13D51C3F001BBCDB /* Security.framework */; };
 		2FCDD6B014A573F500295AAC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCDD6AF14A573F500295AAC /* QuartzCore.framework */; };
 		676F161D1678C501002CBD96 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 676F161C1678C500002CBD96 /* MapKit.framework */; };
+		6786AAE51679A4F8000D78AE /* PAWWallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6786AAE31679A4F8000D78AE /* PAWWallViewController.m */; };
+		6786AAE61679A4F8000D78AE /* PAWWallViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6786AAE41679A4F8000D78AE /* PAWWallViewController.xib */; };
+		6786AB0B1679A66F000D78AE /* PAWSearchRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 6786AB0A1679A66F000D78AE /* PAWSearchRadius.m */; };
+		6786AB0E1679A6A3000D78AE /* PAWCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6786AB0D1679A6A3000D78AE /* PAWCircleView.m */; };
+		6786AB111679A725000D78AE /* PAWPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 6786AB101679A725000D78AE /* PAWPost.m */; };
 		67E7699B16788EAC006112B6 /* Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E7699A16788EAC006112B6 /* Button.png */; };
 		74636BF31578281E00B44132 /* PAPFindFriendsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74636BF21578281E00B44132 /* PAPFindFriendsCell.m */; };
 		747FC485156FFF74003349E1 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 747FC484156FFF74003349E1 /* PAPConstants.m */; };
@@ -195,6 +200,15 @@
 		09BEF34B13D51C3F001BBCDB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		2FCDD6AF14A573F500295AAC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		676F161C1678C500002CBD96 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6786AAE21679A4F8000D78AE /* PAWWallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAWWallViewController.h; sourceTree = SOURCE_ROOT; };
+		6786AAE31679A4F8000D78AE /* PAWWallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAWWallViewController.m; sourceTree = SOURCE_ROOT; };
+		6786AAE41679A4F8000D78AE /* PAWWallViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PAWWallViewController.xib; sourceTree = SOURCE_ROOT; };
+		6786AB091679A66F000D78AE /* PAWSearchRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAWSearchRadius.h; sourceTree = SOURCE_ROOT; };
+		6786AB0A1679A66F000D78AE /* PAWSearchRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAWSearchRadius.m; sourceTree = SOURCE_ROOT; };
+		6786AB0C1679A6A3000D78AE /* PAWCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAWCircleView.h; sourceTree = SOURCE_ROOT; };
+		6786AB0D1679A6A3000D78AE /* PAWCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAWCircleView.m; sourceTree = SOURCE_ROOT; };
+		6786AB0F1679A725000D78AE /* PAWPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAWPost.h; sourceTree = SOURCE_ROOT; };
+		6786AB101679A725000D78AE /* PAWPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAWPost.m; sourceTree = SOURCE_ROOT; };
 		67E7699A16788EAC006112B6 /* Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Button.png; sourceTree = SOURCE_ROOT; };
 		74636BF11578281E00B44132 /* PAPFindFriendsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = PAPFindFriendsCell.h; path = AnyPic/PAPFindFriendsCell.h; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		74636BF21578281E00B44132 /* PAPFindFriendsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = PAPFindFriendsCell.m; path = AnyPic/PAPFindFriendsCell.m; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -496,6 +510,12 @@
 				09ABC07813A1D52D009C3FCF /* Supporting Files */,
 				C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */,
 				C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */,
+				6786AB091679A66F000D78AE /* PAWSearchRadius.h */,
+				6786AB0A1679A66F000D78AE /* PAWSearchRadius.m */,
+				6786AB0C1679A6A3000D78AE /* PAWCircleView.h */,
+				6786AB0D1679A6A3000D78AE /* PAWCircleView.m */,
+				6786AB0F1679A725000D78AE /* PAWPost.h */,
+				6786AB101679A725000D78AE /* PAWPost.m */,
 			);
 			name = Anypic;
 			path = ParseStarterProject;
@@ -751,6 +771,9 @@
 		C4A894921558795F00DC57D3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6786AAE21679A4F8000D78AE /* PAWWallViewController.h */,
+				6786AAE31679A4F8000D78AE /* PAWWallViewController.m */,
+				6786AAE41679A4F8000D78AE /* PAWWallViewController.xib */,
 				C4F102C9156C57ED0061BC3E /* PAPPhotoTimelineViewController.h */,
 				C4F102CA156C57EE0061BC3E /* PAPPhotoTimelineViewController.m */,
 				C4F102C7156C57ED0061BC3E /* PAPHomeViewController.h */,
@@ -1010,6 +1033,7 @@
 				C78BB8D916787E1E004F86D6 /* PAWNewUserViewController.xib in Resources */,
 				C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */,
 				67E7699B16788EAC006112B6 /* Button.png in Resources */,
+				6786AAE61679A4F8000D78AE /* PAWWallViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1058,6 +1082,10 @@
 				C4A6A246158FF842003F64A8 /* MBProgressHUD.m in Sources */,
 				C47DDDE61592761F002114F6 /* Reachability.m in Sources */,
 				C7C8BA1C1678AD8A00BB9FA6 /* PAWAppDelegate.m in Sources */,
+				6786AAE51679A4F8000D78AE /* PAWWallViewController.m in Sources */,
+				6786AB0B1679A66F000D78AE /* PAWSearchRadius.m in Sources */,
+				6786AB0E1679A6A3000D78AE /* PAWCircleView.m in Sources */,
+				6786AB111679A725000D78AE /* PAWPost.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
