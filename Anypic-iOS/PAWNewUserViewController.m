@@ -336,7 +336,9 @@ showDialog:
     NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
     
     PFFile *photoFile = [PFFile fileWithData:imageData];
-    [user setObject:photoFile forKey:@"image"];
+    PFFile *thumbnailFile = [PFFile fileWithData:thumbnailImageData];
+    [user setObject:photoFile forKey:kPAPUserProfilePicMediumKey];
+    [user setObject:thumbnailFile forKey:kPAPUserProfilePicSmallKey];
 	[user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
 		if (error) {
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[[error userInfo] objectForKey:@"error"] message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
