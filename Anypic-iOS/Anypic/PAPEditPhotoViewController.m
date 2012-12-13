@@ -205,6 +205,12 @@
 												longitude:currentCoordinate.longitude];
     // both files have finished uploading
     
+    if (self.commentTextField.text.length == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please enter a title for your picture" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        [alert show];
+        return;
+    }
+    
     // create a photo object
     PFObject *photo = [PFObject objectWithClassName:kPAPPhotoClassKey];
     [photo setObject:[PFUser currentUser] forKey:kPAPPhotoUserKey];
