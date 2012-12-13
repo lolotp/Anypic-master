@@ -85,6 +85,7 @@
 
     PAPPhotoDetailsFooterView *footerView = [[PAPPhotoDetailsFooterView alloc] initWithFrame:footerRect];
     self.commentTextField = footerView.commentField;
+    self.commentTextField.placeholder = @"Title";
     self.commentTextField.delegate = self;
     [self.scrollView addSubview:footerView];
 
@@ -210,6 +211,7 @@
     [photo setObject:self.photoFile forKey:kPAPPhotoPictureKey];
     [photo setObject:self.thumbnailFile forKey:kPAPPhotoThumbnailKey];
     [photo setObject:currentPoint forKey:kPAPPhotoCoordinates];
+    [photo setObject:self.commentTextField.text forKey:kPAPPhotoTitle];
     
     // photos are public, but may only be modified by the user who uploaded them
     PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
@@ -234,7 +236,7 @@
                 
                 if (commentText && commentText.length != 0) {
                     // create and save photo caption
-                    PFObject *comment = [PFObject objectWithClassName:kPAPActivityClassKey];
+                    /*PFObject *comment = [PFObject objectWithClassName:kPAPActivityClassKey];
                     [comment setObject:kPAPActivityTypeComment forKey:kPAPActivityTypeKey];
                     [comment setObject:photo forKey:kPAPActivityPhotoKey];
                     [comment setObject:[PFUser currentUser] forKey:kPAPActivityFromUserKey];
@@ -246,7 +248,7 @@
                     comment.ACL = ACL;
                     
                     [comment saveEventually];
-                    [[PAPCache sharedCache] incrementCommentCountForPhoto:photo];
+                    [[PAPCache sharedCache] incrementCommentCountForPhoto:photo];*/
                 }
             }
             
