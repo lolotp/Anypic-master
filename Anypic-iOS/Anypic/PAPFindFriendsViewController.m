@@ -165,6 +165,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     query.cachePolicy = kPFCachePolicyNetworkOnly;*/
     
     PFQuery *query = [PFUser query];
+    [query whereKey:kPAPUserDisplayNameKey notEqualTo:[[PFUser currentUser] username]];
     
     if (self.objects.count == 0) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
