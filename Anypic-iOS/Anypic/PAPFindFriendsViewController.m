@@ -116,7 +116,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
         [clearButton2 addTarget:self action:@selector(addFriendButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [clearButton2 setFrame:self.headerView.frame];
         [self.headerView addSubview:clearButton2];
-        NSString *inviteString2 = @"Find  friend";
+        NSString *inviteString2 = @"Find friend";
         CGSize inviteStringSize2 = [inviteString2 sizeWithFont:[UIFont boldSystemFontOfSize:18] constrainedToSize:CGSizeMake(310, CGFLOAT_MAX) lineBreakMode:UILineBreakModeTailTruncation];
         UILabel *inviteLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(10, (self.headerView.frame.size.height-inviteStringSize2.height)/2, inviteStringSize2.width, inviteStringSize2.height)];
         [inviteLabel2 setText:inviteString2];
@@ -146,6 +146,7 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
+    /*
     // Use cached facebook friend ids
     NSArray *facebookFriends = [[PAPCache sharedCache] facebookFriends];
     
@@ -160,7 +161,9 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
     [parseEmployeeQuery whereKey:kPAPUserFacebookIDKey containedIn:parseEmployees];
         
     PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:friendsQuery, parseEmployeeQuery, nil]];
-    query.cachePolicy = kPFCachePolicyNetworkOnly;
+    query.cachePolicy = kPFCachePolicyNetworkOnly;*/
+    
+    PFQuery *query = [PFUser query];
     
     if (self.objects.count == 0) {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
