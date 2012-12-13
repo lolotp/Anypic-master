@@ -55,7 +55,7 @@
 	
 	[anObject fetchIfNeeded]; 
 	CLLocationCoordinate2D aCoordinate = CLLocationCoordinate2DMake(self.geopoint.latitude, self.geopoint.longitude);
-	NSString *aTitle = @"placeholder";//[anObject objectForKey:kPAPPhotoUserKey];
+	NSString *aTitle = [anObject objectForKey:kPAPPhotoTitle];
 	NSString *aSubtitle = [[anObject objectForKey:kPAWParseUserKey] objectForKey:kPAWParseUsernameKey];
 	
 	return [self initWithCoordinate:aCoordinate andTitle:aTitle andSubtitle:aSubtitle];
@@ -93,7 +93,7 @@
 		self.title = kPAWWallCantViewPost;
 		self.pinColor = MKPinAnnotationColorRed;
 	} else {
-		self.title = [self.object objectForKey:kPAWParseTextKey];
+		self.title = [self.object objectForKey:kPAPPhotoTitle];
 		self.subtitle = [[self.object objectForKey:kPAWParseUserKey] objectForKey:kPAWParseUsernameKey];
 		self.pinColor = MKPinAnnotationColorGreen;
 	}

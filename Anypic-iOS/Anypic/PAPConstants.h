@@ -88,6 +88,7 @@ extern NSString *const kPAPPhotoThumbnailKey;
 extern NSString *const kPAPPhotoUserKey;
 extern NSString *const kPAPPhotoOpenGraphIDKey;
 extern NSString *const kPAPPhotoCoordinates;
+extern NSString *const kPAPPhotoTitle;
 
 #pragma mark - Cached Photo Attributes
 // keys
