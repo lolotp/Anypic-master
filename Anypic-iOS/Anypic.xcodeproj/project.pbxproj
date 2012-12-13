@@ -183,7 +183,7 @@
 		C78BB8D716787E1B004F86D6 /* PAWWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7516787988006AE695 /* PAWWelcomeViewController.xib */; };
 		C78BB8D916787E1E004F86D6 /* PAWNewUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7B167879B8006AE695 /* PAWNewUserViewController.xib */; };
 		C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D78167879B6006AE695 /* PAWLoginViewController.xib */; };
-		C7B635E41679C31F0078FBAA /* default_profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7B635E31679C31F0078FBAA /* default_profile.jpg */; };
+		C7B635FE1679C7F00078FBAA /* default_profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7B635FD1679C7EF0078FBAA /* default_profile.jpg */; };
 		C7C8BA1C1678AD8A00BB9FA6 /* PAWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -415,7 +415,7 @@
 		C7182D7C167879C5006AE695 /* hackitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hackitlogo.png; sourceTree = SOURCE_ROOT; };
 		C7182D8316787AB2006AE695 /* PAWActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAWActivityView.h; sourceTree = SOURCE_ROOT; };
 		C7182D8416787AB3006AE695 /* PAWActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAWActivityView.m; sourceTree = SOURCE_ROOT; };
-		C7B635E31679C31F0078FBAA /* default_profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = default_profile.jpg; path = ../../../../../Documents/default_profile.jpg; sourceTree = "<group>"; };
+		C7B635FD1679C7EF0078FBAA /* default_profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_profile.jpg; sourceTree = "<group>"; };
 		C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PAWAppDelegate.h; path = Anypic/PAWAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAWAppDelegate.m; path = Anypic/PAWAppDelegate.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -538,7 +538,7 @@
 		7460D3AD1565557A00F755E4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				C7B635E31679C31F0078FBAA /* default_profile.jpg */,
+				C7B635FD1679C7EF0078FBAA /* default_profile.jpg */,
 				C463AF8E15BF1DAF007F834E /* AvatarPlaceholder.png */,
 				C463AF8F15BF1DAF007F834E /* AvatarPlaceholder@2x.png */,
 				C4BE6715157FC7E000A291C2 /* BackgroundComments.png */,
@@ -1037,7 +1037,7 @@
 				C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */,
 				67E7699B16788EAC006112B6 /* Button.png in Resources */,
 				6786AAE61679A4F8000D78AE /* PAWWallViewController.xib in Resources */,
-				C7B635E41679C31F0078FBAA /* default_profile.jpg in Resources */,
+				C7B635FE1679C7F00078FBAA /* default_profile.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
