@@ -245,7 +245,10 @@
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
-    /*if (![PFUser currentUser]) {
+    /*PFQuery *queryy = [PFQuery queryWithClassName:self.className];
+    //[query setLimit:0];
+    return queryy;*/
+    if (![PFUser currentUser]) {
         PFQuery *query = [PFQuery queryWithClassName:self.className];
         [query setLimit:0];
         return query;
@@ -256,69 +259,13 @@
     [followingActivitiesQuery whereKey:kPAPActivityFromUserKey equalTo:[PFUser currentUser]];
     followingActivitiesQuery.cachePolicy = kPFCachePolicyNetworkOnly;
     followingActivitiesQuery.limit = 1000;
-    // Get our current location:
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    CLLocation *currentLocation = appDelegate.currentLocation;
-    CLLocationAccuracy filterDistance = appDelegate.filterDistance;
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:20.0//currentLocation.coordinate.latitude
-                                               longitude:20.0];//currentLocation.coordinate.longitude];
-    PFQuery *photosFromFollowedUsersQuery = [PFQuery queryWithClassName:self.className];
-    [photosFromFollowedUsersQuery whereKey:kPAPPhotoUserKey matchesKey:kPAPActivityToUserKey inQuery:followingActivitiesQuery];
-    [photosFromFollowedUsersQuery whereKeyExists:kPAPPhotoPictureKey];
-    [photosFromFollowedUsersQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
-                                                                              withinKilometers:10];//filterDistance / kPAWMetersInAKilometer];
     
-    NSLog(@"current loc: %f,%f filterdistance is : %f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude, filterDistance);
-    PFQuery *photosFromCurrentUserQuery = [PFQuery queryWithClassName:self.className];
-    //[photosFromCurrentUserQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser]];
-    //[photosFromCurrentUserQuery whereKeyExists:kPAPPhotoPictureKey];
-    [photosFromCurrentUserQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
-                                                                            withinKilometers:kPAWWallPostMaximumSearchDistance ];//filterDistance / kPAWMetersInAKilometer];
-    
-    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:photosFromFollowedUsersQuery, photosFromCurrentUserQuery, nil]];
-    [query includeKey:kPAPPhotoUserKey];
-    [query orderByDescending:@"createdAt"];
-
-    // A pull-to-refresh should always trigger a network request.
-    [query setCachePolicy:kPFCachePolicyNetworkOnly];
-
-    // If no objects are loaded in memory, we look to the cache first to fill the table
-    // and then subsequently do a query against the network.
-    //
-    // If there is no network connection, we will hit the cache first.
-    if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
-        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
-    }
-
-    /*
-     This query will result in an error if the schema hasn't been set beforehand. While Parse usually handles this automatically, this is not the case for a compound query such as this one. The error thrown is:
-     
-     Error: bad special key: __type
-     
-     To set up your schema, you may post a photo with a caption. This will automatically set up the Photo and Activity classes needed by this query.
-     
-     You may also use the Data Browser at Parse.com to set up your classes in the following manner.
-     
-     Create a User class: "User" (if it does not exist)
-     
-     Create a Custom class: "Activity"
-     - Add a column of type pointer to "User", named "fromUser"
-     - Add a column of type pointer to "User", named "toUser"
-     - Add a string column "type"
-     
-     Create a Custom class: "Photo"
-     - Add a column of type pointer to "User", named "user"
-     
-     You'll notice that these correspond to each of the fields used by the preceding query.
-     *
-
-    return query;*/
-    PFQuery *query = [PFQuery queryWithClassName:self.className];
+    PFQuery *locationQuery = [PFQuery queryWithClassName:self.className];
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+        locationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
     
     // Query for posts near our current location.
@@ -331,11 +278,33 @@
     // And set the query to look by location
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:currentLocation.coordinate.latitude
                                                longitude:currentLocation.coordinate.longitude];
-    [query whereKey:kPAPPhotoCoordinates nearGeoPoint:point
+    [locationQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
    withinKilometers:filterDistance / kPAWMetersInAKilometer];
-    [query includeKey:kPAWParseUserKey];
-    query.limit = 100;
-    return query;
+    [locationQuery whereKey:kPAPPhotoUserKey matchesKey:kPAPActivityToUserKey inQuery:followingActivitiesQuery];
+    [locationQuery includeKey:kPAWParseUserKey];
+    
+    [locationQuery orderByDescending:@"createdAt"];
+    return locationQuery;
+    PFQuery *selfQuery = [PFQuery queryWithClassName:self.className];
+    [selfQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser] ];
+    //[selfQuery whereKeyExists:kPAPPhotoPictureKey];
+    //[selfQuery includeKey:kPAWParseUserKey];
+    PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects: locationQuery, selfQuery, nil]];
+    [query includeKey:kPAPPhotoUserKey];
+    [query orderByDescending:@"createdAt"];
+    
+    // A pull-to-refresh should always trigger a network request.
+    [query setCachePolicy:kPFCachePolicyNetworkOnly];
+    
+    // If no objects are loaded in memory, we look to the cache first to fill the table
+    // and then subsequently do a query against the network.
+    //
+    // If there is no network connection, we will hit the cache first.
+    if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
+        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    }
+     return query;
+    //return selfQuery;
 }
 
 - (PFObject *)objectAtIndexPath:(NSIndexPath *)indexPath {
