@@ -40,6 +40,7 @@
 	self = [super init];
 	if (self) {
 		self.coordinate = aCoordinate;
+        
 		self.title = aTitle;
 		self.subtitle = aSubtitle;
 		self.animatesDrop = NO;
@@ -49,12 +50,12 @@
 
 - (id)initWithPFObject:(PFObject *)anObject {
 	self.object = anObject;
-	self.geopoint = [anObject objectForKey:kPAWParseLocationKey];
+	self.geopoint = [anObject objectForKey:kPAPPhotoCoordinates];
 	self.user = [anObject objectForKey:kPAWParseUserKey];
 	
 	[anObject fetchIfNeeded]; 
 	CLLocationCoordinate2D aCoordinate = CLLocationCoordinate2DMake(self.geopoint.latitude, self.geopoint.longitude);
-	NSString *aTitle = [anObject objectForKey:kPAWParseTextKey];
+	NSString *aTitle = @"placeholder";//[anObject objectForKey:kPAPPhotoUserKey];
 	NSString *aSubtitle = [[anObject objectForKey:kPAWParseUserKey] objectForKey:kPAWParseUsernameKey];
 	
 	return [self initWithCoordinate:aCoordinate andTitle:aTitle andSubtitle:aSubtitle];

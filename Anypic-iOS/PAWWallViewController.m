@@ -71,7 +71,8 @@
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
 		self.title = @"AnyWall";
-		self.className = kPAWParsePostsClassKey;
+		//self.className = kPAWParsePostsClassKey;
+        self.className = kPAPPhotoClassKey;
 		annotations = [[NSMutableArray alloc] initWithCapacity:10];
 		allPosts = [[NSMutableArray alloc] initWithCapacity:10];
 	}
@@ -401,7 +402,7 @@
 
 	// Query for posts sort of kind of near our current location.
 	PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:currentLocation.coordinate.latitude longitude:currentLocation.coordinate.longitude];
-	[query whereKey:kPAWParseLocationKey nearGeoPoint:point withinKilometers:kPAWWallPostMaximumSearchDistance];
+	[query whereKey:kPAPPhotoCoordinates nearGeoPoint:point withinKilometers:kPAWWallPostMaximumSearchDistance];
 	[query includeKey:kPAWParseUserKey];
 	query.limit = kPAWWallPostsSearch;
 
