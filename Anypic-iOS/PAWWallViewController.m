@@ -9,6 +9,8 @@
 #import "PAWWallViewController.h"
 
 //#import "PAWSettingsViewController.h"
+#import "PAPSettingsActionSheetDelegate.h"
+#import "PAPSettingsButtonItem.h"
 //#import "PAWWallPostCreateViewController.h"
 #import "AppDelegate.h"
 //#import "PAWWallPostsTableViewController.h"
@@ -28,6 +30,7 @@
 //@property (nonatomic, strong) PAWWallPostsTableViewController *wallPostsTableViewController;
 @property (nonatomic, assign) BOOL mapPinsPlaced;
 @property (nonatomic, assign) BOOL mapPannedSinceLocationUpdate;
+@property (nonatomic, strong) PAPSettingsActionSheetDelegate *settingsActionSheetDelegate;
 
 // posts:
 @property (nonatomic, strong) NSMutableArray *allPosts;
@@ -91,6 +94,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    
+    self.navigationItem.rightBarButtonItem = [[PAPSettingsButtonItem alloc] initWithTarget:self action:@selector(settingsButtonAction:)];
 
 	// Add the wall posts tableview as a subview with view containment (new in iOS 5.0):
 	self.wallPostsTableViewController = [[PAPHomeViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -150,6 +157,15 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kPAWPostCreatedNotification object:nil];
 	
 	self.mapPinsPlaced = NO; // reset this for the next time we show the map.
+}
+
+#pragma mark - ()
+
+- (void)settingsButtonAction:(id)sender {
+    self.settingsActionSheetDelegate = [[PAPSettingsActionSheetDelegate alloc] initWithNavigationController:self.navigationController];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self.settingsActionSheetDelegate cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"My Profile",@"Find Friends",@"Log Out", nil];
+    
+    [actionSheet showFromTabBar:self.tabBarController.tabBar];
 }
 
 #pragma mark - NSNotificationCenter notification handlers
