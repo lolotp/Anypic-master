@@ -439,7 +439,27 @@ static NSUInteger const kPAPCellPhotoNumLabelTag = 5;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     //NSLog(@"Entered: %@",[[alertView textFieldAtIndex:0] text]);
-    
+    NSString *user_to_add = [[alertView textFieldAtIndex:0] text];
+    PFQuery *friendsQuery = [PFUser query];
+    [friendsQuery whereKey:@"username" equalTo:user_to_add];
+    NSArray *userList = [friendsQuery findObjects];
+    //NSLog(@"%d", [userList count]);
+    if ([userList count] > 0){
+        PFUser *cellUser = (PFUser*)[userList objectAtIndex:0];
+        [PAPUtility followUserEventually:cellUser block:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:PAPUtilityUserFollowingChangedNotification object:nil];
+            }
+        }];
+    }else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Following friend failed"
+                                                        message:@"It seems that no such users exist."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        //[alert release];
+    }
 }
 
 - (void)followAllFriendsButtonAction:(id)sender {
