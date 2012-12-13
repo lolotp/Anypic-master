@@ -93,7 +93,7 @@
 		self.title = kPAWWallCantViewPost;
 		self.pinColor = MKPinAnnotationColorRed;
 	} else {
-		self.title = [self.object objectForKey:kPAWParseTextKey];
+		self.title = @"placeholder";//[self.object objectForKey:@"placeholder"];
 		self.subtitle = [[self.object objectForKey:kPAWParseUserKey] objectForKey:kPAWParseUsernameKey];
 		self.pinColor = MKPinAnnotationColorGreen;
 	}
