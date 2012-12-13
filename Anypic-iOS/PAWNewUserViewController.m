@@ -59,8 +59,10 @@
     profileImage = [UIImage imageNamed:@"default_profile.jpg"];
     profileImageCaptureButton.image = profileImage;
     [profileImageCaptureButton setUserInteractionEnabled:YES];
+
     UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(uploadProfile:)];
     [profileImageCaptureButton addGestureRecognizer:tapper];
+    usernameField.delegate = passwordField.delegate = passwordAgainField.delegate = self;
 	doneButton.enabled = NO;
 }
 
@@ -94,7 +96,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSLog(@"TTT");
     [self dismissModalViewControllerAnimated:NO];
     profileImage = [info objectForKey:UIImagePickerControllerEditedImage];
     
@@ -104,6 +105,7 @@
 #pragma mark - UITextFieldDelegate methods
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"ZZZ");
 	if (textField == usernameField) {
 		[passwordField becomeFirstResponder];
 	}
