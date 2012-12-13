@@ -180,6 +180,7 @@
 		C7182D8116787A69006AE695 /* PAWNewUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7182D7A167879B8006AE695 /* PAWNewUserViewController.m */; };
 		C7182D8216787A69006AE695 /* PAWWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7182D7416787987006AE695 /* PAWWelcomeViewController.m */; };
 		C7182D8516787B00006AE695 /* PAWActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7182D8416787AB3006AE695 /* PAWActivityView.m */; };
+		C7496FBE1679F3B1008B54A8 /* icon_followers@114.png in Resources */ = {isa = PBXBuildFile; fileRef = C7496FBD1679F3B1008B54A8 /* icon_followers@114.png */; };
 		C78BB8D716787E1B004F86D6 /* PAWWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7516787988006AE695 /* PAWWelcomeViewController.xib */; };
 		C78BB8D916787E1E004F86D6 /* PAWNewUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D7B167879B8006AE695 /* PAWNewUserViewController.xib */; };
 		C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D78167879B6006AE695 /* PAWLoginViewController.xib */; };
@@ -194,7 +195,7 @@
 		092354B613A1D83C00DA740F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		095ACE8513C68EA300566243 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		099CCEAC13F9E3760039A464 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		09ABC06D13A1D52D009C3FCF /* Anypic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anypic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09ABC06D13A1D52D009C3FCF /* HackIt!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackIt!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ABC07113A1D52D009C3FCF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		09ABC07313A1D52D009C3FCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		09ABC07513A1D52D009C3FCF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -415,6 +416,8 @@
 		C7182D7C167879C5006AE695 /* hackitlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hackitlogo.png; sourceTree = SOURCE_ROOT; };
 		C7182D8316787AB2006AE695 /* PAWActivityView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAWActivityView.h; sourceTree = SOURCE_ROOT; };
 		C7182D8416787AB3006AE695 /* PAWActivityView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAWActivityView.m; sourceTree = SOURCE_ROOT; };
+		C7496FBB1679F1D9008B54A8 /* icon_followers@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_followers@2x.png"; sourceTree = "<group>"; };
+		C7496FBD1679F3B1008B54A8 /* icon_followers@114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_followers@114.png"; sourceTree = "<group>"; };
 		C7B635FD1679C7EF0078FBAA /* default_profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_profile.jpg; sourceTree = "<group>"; };
 		C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PAWAppDelegate.h; path = Anypic/PAWAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAWAppDelegate.m; path = Anypic/PAWAppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -452,6 +455,8 @@
 		09ABC06213A1D52D009C3FCF = {
 			isa = PBXGroup;
 			children = (
+				C7496FBD1679F3B1008B54A8 /* icon_followers@114.png */,
+				C7496FBB1679F1D9008B54A8 /* icon_followers@2x.png */,
 				09ABC07713A1D52D009C3FCF /* Anypic */,
 				C4A0B4FF156C5B9F00E48554 /* External */,
 				09ABC07013A1D52D009C3FCF /* Frameworks */,
@@ -462,7 +467,7 @@
 		09ABC06E13A1D52D009C3FCF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09ABC06D13A1D52D009C3FCF /* Anypic.app */,
+				09ABC06D13A1D52D009C3FCF /* HackIt!.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -887,7 +892,7 @@
 			);
 			name = Anypic;
 			productName = ParseStarterProject;
-			productReference = 09ABC06D13A1D52D009C3FCF /* Anypic.app */;
+			productReference = 09ABC06D13A1D52D009C3FCF /* HackIt!.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1038,6 +1043,7 @@
 				67E7699B16788EAC006112B6 /* Button.png in Resources */,
 				6786AAE61679A4F8000D78AE /* PAWWallViewController.xib in Resources */,
 				C7B635FE1679C7F00078FBAA /* default_profile.jpg in Resources */,
+				C7496FBE1679F3B1008B54A8 /* icon_followers@114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1161,7 +1167,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = Anypic;
+				PRODUCT_NAME = "HackIt!";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1184,7 +1190,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = Anypic;
+				PRODUCT_NAME = "HackIt!";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1225,7 +1231,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = Anypic;
+				PRODUCT_NAME = "HackIt!";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6A5A958-17C2-4AC8-A515-A27933509394";
 				VALIDATE_PRODUCT = YES;
@@ -1267,7 +1273,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = Anypic;
+				PRODUCT_NAME = "HackIt!";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "33A2D497-75AF-4AEC-9E3E-2126A76EAED4";
 				VALIDATE_PRODUCT = YES;
