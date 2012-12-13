@@ -18,6 +18,7 @@
 #import "PAWCircleView.h"
 #import <CoreLocation/CoreLocation.h>
 #import "PAPHomeViewController.h"
+#import "UIImage+ResizeAdditions.h"
 
 // private methods and properties
 @interface PAWWallViewController ()
@@ -73,7 +74,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
 	if (self) {
-		self.title = @"AnyWall";
+		//self.title = @"AnyWall";
 		//self.className = kPAWParsePostsClassKey;
         self.className = kPAPPhotoClassKey;
 		annotations = [[NSMutableArray alloc] initWithCapacity:10];
@@ -95,7 +96,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"hackitlogo.png" ] resizedImage:CGSizeMake(140, 40) interpolationQuality:kCGInterpolationHigh]];
+    
     
     self.navigationItem.rightBarButtonItem = [[PAPSettingsButtonItem alloc] initWithTarget:self action:@selector(settingsButtonAction:)];
 

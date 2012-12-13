@@ -97,7 +97,9 @@
 
     [self.navigationItem setHidesBackButton:YES];
 
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"hackitlogo.png" ] resizedImage:CGSizeMake(140, 40) interpolationQuality:kCGInterpolationHigh]];
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButtonAction:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Publish" style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonAction:)];
     

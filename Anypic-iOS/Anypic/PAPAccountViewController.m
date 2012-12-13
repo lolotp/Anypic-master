@@ -10,6 +10,7 @@
 #import "PAPPhotoCell.h"
 #import "TTTTimeIntervalFormatter.h"
 #import "PAPLoadMoreCell.h"
+#import "UIImage+ResizeAdditions.h"
 
 @interface PAPAccountViewController()
 @property (nonatomic, strong) UIView *headerView;
@@ -30,7 +31,8 @@
         [NSException raise:NSInvalidArgumentException format:@"user cannot be nil"];
     }
 
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"hackitlogo.png" ] resizedImage:CGSizeMake(140, 40) interpolationQuality:kCGInterpolationHigh]];
 
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setFrame:CGRectMake( 0.0f, 0.0f, 52.0f, 32.0f)];

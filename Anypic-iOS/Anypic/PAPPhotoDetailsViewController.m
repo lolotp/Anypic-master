@@ -15,6 +15,7 @@
 #import "PAPLoadMoreCell.h"
 #import "PAPUtility.h"
 #import "MBProgressHUD.h"
+#import "UIImage+ResizeAdditions.h"
 
 enum ActionSheetTags {
     MainActionSheetTag = 0,
@@ -63,8 +64,9 @@ static const CGFloat kPAPCellInsetWidth = 20.0f;
 
     [super viewDidLoad];
     
-    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
-
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"hackitlogo.png" ] resizedImage:CGSizeMake(140, 40) interpolationQuality:kCGInterpolationHigh]];
+    
     [self.navigationItem setHidesBackButton:YES];
 
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];

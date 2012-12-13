@@ -16,6 +16,7 @@
 #import "PAPSettingsButtonItem.h"
 #import "PAPFindFriendsViewController.h"
 #import "MBProgressHUD.h"
+#import "UIImage+ResizeAdditions.h"
 
 @interface PAPActivityFeedViewController ()
 
@@ -72,6 +73,7 @@ static NSString *const kPAPActivityTypeJoinedString = @"joined Anypic";
     self.tableView.backgroundView = texturedBackgroundView;
 
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LogoNavigationBar.png"]];
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"hackitlogo.png" ] resizedImage:CGSizeMake(140, 40) interpolationQuality:kCGInterpolationHigh]];
 
     // Add Settings button
     self.navigationItem.rightBarButtonItem = [[PAPSettingsButtonItem alloc] initWithTarget:self action:@selector(settingsButtonAction:)];
