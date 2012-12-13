@@ -12,6 +12,7 @@
 #import "PAPPhotoDetailsViewController.h"
 #import "PAPUtility.h"
 #import "PAPLoadMoreCell.h"
+#import "AppDelegate.h"
 
 @interface PAPPhotoTimelineViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
@@ -244,7 +245,7 @@
 #pragma mark - PFQueryTableViewController
 
 - (PFQuery *)queryForTable {
-    if (![PFUser currentUser]) {
+    /*if (![PFUser currentUser]) {
         PFQuery *query = [PFQuery queryWithClassName:self.className];
         [query setLimit:0];
         return query;
@@ -255,15 +256,25 @@
     [followingActivitiesQuery whereKey:kPAPActivityFromUserKey equalTo:[PFUser currentUser]];
     followingActivitiesQuery.cachePolicy = kPFCachePolicyNetworkOnly;
     followingActivitiesQuery.limit = 1000;
-    
+    // Get our current location:
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    CLLocation *currentLocation = appDelegate.currentLocation;
+    CLLocationAccuracy filterDistance = appDelegate.filterDistance;
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:20.0//currentLocation.coordinate.latitude
+                                               longitude:20.0];//currentLocation.coordinate.longitude];
     PFQuery *photosFromFollowedUsersQuery = [PFQuery queryWithClassName:self.className];
     [photosFromFollowedUsersQuery whereKey:kPAPPhotoUserKey matchesKey:kPAPActivityToUserKey inQuery:followingActivitiesQuery];
     [photosFromFollowedUsersQuery whereKeyExists:kPAPPhotoPictureKey];
-
+    [photosFromFollowedUsersQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
+                                                                              withinKilometers:10];//filterDistance / kPAWMetersInAKilometer];
+    
+    NSLog(@"current loc: %f,%f filterdistance is : %f",currentLocation.coordinate.latitude,currentLocation.coordinate.longitude, filterDistance);
     PFQuery *photosFromCurrentUserQuery = [PFQuery queryWithClassName:self.className];
-    [photosFromCurrentUserQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser]];
-    [photosFromCurrentUserQuery whereKeyExists:kPAPPhotoPictureKey];
-
+    //[photosFromCurrentUserQuery whereKey:kPAPPhotoUserKey equalTo:[PFUser currentUser]];
+    //[photosFromCurrentUserQuery whereKeyExists:kPAPPhotoPictureKey];
+    [photosFromCurrentUserQuery whereKey:kPAPPhotoCoordinates nearGeoPoint:point
+                                                                            withinKilometers:kPAWWallPostMaximumSearchDistance ];//filterDistance / kPAWMetersInAKilometer];
+    
     PFQuery *query = [PFQuery orQueryWithSubqueries:[NSArray arrayWithObjects:photosFromFollowedUsersQuery, photosFromCurrentUserQuery, nil]];
     [query includeKey:kPAPPhotoUserKey];
     [query orderByDescending:@"createdAt"];
@@ -299,8 +310,31 @@
      - Add a column of type pointer to "User", named "user"
      
      You'll notice that these correspond to each of the fields used by the preceding query.
-     */
+     *
 
+    return query;*/
+    PFQuery *query = [PFQuery queryWithClassName:self.className];
+    
+    // If no objects are loaded in memory, we look to the cache first to fill the table
+    // and then subsequently do a query against the network.
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
+    // Query for posts near our current location.
+    
+    // Get our current location:
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    CLLocation *currentLocation = appDelegate.currentLocation;
+    CLLocationAccuracy filterDistance = appDelegate.filterDistance;
+    
+    // And set the query to look by location
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:currentLocation.coordinate.latitude
+                                               longitude:currentLocation.coordinate.longitude];
+    [query whereKey:kPAPPhotoCoordinates nearGeoPoint:point
+   withinKilometers:filterDistance / kPAWMetersInAKilometer];
+    [query includeKey:kPAWParseUserKey];
+    query.limit = 100;
     return query;
 }
 
