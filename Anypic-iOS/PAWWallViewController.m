@@ -121,6 +121,10 @@
 
 	self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.332495, -122.029095), MKCoordinateSpanMake(0.008516, 0.021801));
 	self.mapPannedSinceLocationUpdate = NO;
+    
+    UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)];
+    [mapView addGestureRecognizer:tapper];
+    
 	[self startStandardUpdates];
 }
 
@@ -138,6 +142,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if(![self.view.subviews containsObject:mapView]) {
+        UITapGestureRecognizer *tapper = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)];
+        [mapView addGestureRecognizer:tapper];
+        [self.view addSubview:mapView];
+        self.mapView.frame = CGRectMake(0,0,320,112);
+    }
 	[locationManager startUpdatingLocation];
 	[super viewWillAppear:animated];
 }
@@ -163,6 +173,14 @@
 }
 
 #pragma mark - ()
+
+- (void)zoom:(UITapGestureRecognizer *)gesture {
+    UIViewController *vc = [[UIViewController alloc] init];
+    [vc.view addSubview:mapView];
+    mapView.frame = CGRectMake(0, 0, 320, 416);
+    [mapView removeGestureRecognizer:[mapView.gestureRecognizers objectAtIndex:0]];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)settingsButtonAction:(id)sender {
     self.settingsActionSheetDelegate = [[PAPSettingsActionSheetDelegate alloc] initWithNavigationController:self.navigationController];
