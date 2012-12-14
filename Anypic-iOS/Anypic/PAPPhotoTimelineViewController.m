@@ -286,13 +286,7 @@
     [locationQuery whereKey:@"objectId" matchesKey:@"objectId" inQuery:query];
     [locationQuery includeKey:kPAWParseUserKey];
     [locationQuery orderByDescending:@"createdAt"];
-    
-    
-    // If no objects are loaded in memory, we look to the cache first to fill the table
-    // and then subsequently do a query against the network.
-    if ([self.objects count] == 0) {
-        locationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    }
+        
     // A pull-to-refresh should always trigger a network request.
     [locationQuery setCachePolicy:kPFCachePolicyNetworkOnly];
     
