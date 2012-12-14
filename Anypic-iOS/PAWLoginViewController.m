@@ -194,6 +194,8 @@
 			[self.presentingViewController dismissModalViewControllerAnimated:YES];*/
 			/*TabBarController *tabBarController = [[TabBarController alloc] initWithNibName:nil bundle:nil];
 			[(UINavigationController *)self.presentingViewController pushViewController:tabBarController animated:NO];*/
+            [PFPush subscribeToChannelInBackground:@"All"];
+            NSLog(@"subscribed");
 			[self.presentingViewController dismissModalViewControllerAnimated:YES];
 		} else {
 			// Didn't get a user.
