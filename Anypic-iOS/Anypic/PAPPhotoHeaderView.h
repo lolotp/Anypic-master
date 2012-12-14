@@ -40,6 +40,8 @@ typedef enum {
 /// The Comment On Photo button
 @property (nonatomic,readonly) UIButton *commentButton;
 
+@property (nonatomic,readonly) UIButton *titleButton;
+
 /*! @name Delegate */
 @property (nonatomic,weak) id <PAPPhotoHeaderViewDelegate> delegate;
 
@@ -56,7 +58,7 @@ typedef enum {
  @param enable a BOOL indicating if the like button should be enabled.
  */
 - (void)shouldEnableLikeButton:(BOOL)enable;
-
+- (void) setTitle:(NSString*)title;
 @end
 
 

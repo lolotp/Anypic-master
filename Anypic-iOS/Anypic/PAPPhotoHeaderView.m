@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UIButton *userButton;
 @property (nonatomic, strong) UILabel *timestampLabel;
 @property (nonatomic, strong) TTTTimeIntervalFormatter *timeIntervalFormatter;
+@property (nonatomic, strong) UILabel *myLabel;
+@property (nonatomic) BOOL added;
 @end
 
 
@@ -31,6 +33,9 @@
 @synthesize likeButton;
 @synthesize commentButton;
 @synthesize delegate;
+@synthesize titleButton;
+@synthesize myLabel;
+@synthesize added;
 
 #pragma mark - Initialization
 
@@ -111,6 +116,7 @@
             [self.userButton setTitleShadowColor:[UIColor colorWithWhite:1.0f alpha:0.750f] forState:UIControlStateNormal];
         }
         
+        
         self.timeIntervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
         
         // timestamp
@@ -131,10 +137,20 @@
         layer.shouldRasterize = YES;
         layer.shadowPath = [UIBezierPath bezierPathWithRect:CGRectMake( 0.0f, containerView.frame.size.height - 4.0f, containerView.frame.size.width, 4.0f)].CGPath;
     }
-
+    added = NO;
     return self;
 }
-
+-(void)setTitle:(NSString *)title {
+    
+    if (!added) {
+        added = YES;
+    myLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x+150,self.bounds.origin.y,60,30)];
+    
+    myLabel.backgroundColor = self.backgroundColor;
+    [self addSubview:myLabel];
+    }
+    myLabel.text = title;
+}
 
 #pragma mark - PAPPhotoHeaderView
 

@@ -126,9 +126,9 @@
     [headerView setPhoto:photo];
     headerView.tag = section;
     [headerView.likeButton setTag:section];
-    
+    NSString* title = [photo objectForKey:kPAPPhotoTitle];
+    [headerView setTitle:title];
     NSDictionary *attributesForPhoto = [[PAPCache sharedCache] attributesForPhoto:photo];
-
     if (attributesForPhoto) {
         [headerView setLikeStatus:[[PAPCache sharedCache] isPhotoLikedByCurrentUser:photo]];
         [headerView.likeButton setTitle:[[[PAPCache sharedCache] likeCountForPhoto:photo] description] forState:UIControlStateNormal];
