@@ -47,18 +47,9 @@
     PFFile *imageFile = [self.user objectForKey:kPAPUserProfilePicMediumKey];
     if (imageFile) {
         [profilePictureImageView setFile:imageFile];
-        [profilePictureImageView loadInBackground:^(UIImage *image, NSError *error) {
-            if (!error) {
-                [UIView animateWithDuration:0.200f animations:^{
-                    profilePictureBackgroundView.alpha = 1.0f;
-                    profilePictureStrokeImageView.alpha = 1.0f;
-                    profilePictureImageView.alpha = 1.0f;
-                }];
-            }
-        }];
+        [profilePictureImageView setImage:resizedImage];
     }
 }
-
 
 - (BOOL)shouldStartCameraController {
     
