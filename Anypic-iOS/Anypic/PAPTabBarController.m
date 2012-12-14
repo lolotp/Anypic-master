@@ -56,16 +56,31 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self dismissModalViewControllerAnimated:NO];
+    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
+    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0)
+        == kCFCompareEqualTo) {
+        UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+        
+        PAPEditPhotoViewController *viewController = [[PAPEditPhotoViewController alloc] initWithImage:image];
+        [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        
+        [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+        [self.navController pushViewController:viewController animated:NO];
+        
+        [self presentModalViewController:self.navController animated:YES];
+    }
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-     
-    PAPEditPhotoViewController *viewController = [[PAPEditPhotoViewController alloc] initWithImage:image];
-    [viewController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    
-    [self.navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self.navController pushViewController:viewController animated:NO];
-    
-    [self presentModalViewController:self.navController animated:YES];
+    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeMovie, 0)
+        == kCFCompareEqualTo) {
+        
+        NSString *moviePath = [[info objectForKey:
+                                UIImagePickerControllerMediaURL] path];
+        
+        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum (moviePath)) {
+            UISaveVideoAtPathToSavedPhotosAlbum (
+                                                 moviePath, nil, nil, nil);
+        }
+    }
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -118,7 +133,7 @@
         && [[UIImagePickerController availableMediaTypesForSourceType:
              UIImagePickerControllerSourceTypeCamera] containsObject:(NSString *)kUTTypeImage]) {
         
-        cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+        cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, (NSString *)kUTTypeMovie, nil];
         cameraUI.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear]) {
@@ -152,13 +167,12 @@
         && [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypePhotoLibrary] containsObject:(NSString *)kUTTypeImage]) {
         
         cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
-        
+        cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, (NSString *)kUTTypeMovie, nil];        
     } else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]
                && [[UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum] containsObject:(NSString *)kUTTypeImage]) {
         
         cameraUI.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        cameraUI.mediaTypes = [NSArray arrayWithObject:(NSString *) kUTTypeImage];
+        cameraUI.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, (NSString *)kUTTypeMovie, nil];
         
     } else {
         return NO;

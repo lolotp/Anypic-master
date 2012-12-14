@@ -290,11 +290,13 @@
     
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
-    if ([self.objects count] == 0) {
-        locationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    }
+    
     // A pull-to-refresh should always trigger a network request.
     [locationQuery setCachePolicy:kPFCachePolicyNetworkOnly];
+    
+    /*if ([self.objects count] == 0) {
+        locationQuery.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }*/
     
     // If there is no network connection, we will hit the cache first.
     if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
