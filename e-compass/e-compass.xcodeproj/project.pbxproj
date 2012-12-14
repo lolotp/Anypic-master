@@ -35,7 +35,6 @@
 		C463AF9015BF1DAF007F834E /* AvatarPlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = C463AF8E15BF1DAF007F834E /* AvatarPlaceholder.png */; };
 		C463AF9115BF1DAF007F834E /* AvatarPlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C463AF8F15BF1DAF007F834E /* AvatarPlaceholder@2x.png */; };
 		C47DDDE61592761F002114F6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C47DDDE51592761F002114F6 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		C47DDDE915927631002114F6 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = C47DDDE815927631002114F6 /* iTunesArtwork@2x */; };
 		C49F5860160285CC0027383F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49F585F160285CC0027383F /* Parse.framework */; };
 		C4A0B505156C5B9F00E48554 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A0B503156C5B9F00E48554 /* TTTTimeIntervalFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C4A6A246158FF842003F64A8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A6A245158FF842003F64A8 /* MBProgressHUD.m */; };
@@ -47,8 +46,6 @@
 		C4BE66FE157FC52F00A291C2 /* ShadowProfilePicture-35@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE66F8157FC52E00A291C2 /* ShadowProfilePicture-35@2x.png */; };
 		C4BE66FF157FC52F00A291C2 /* ShadowProfilePicture-43.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE66F9157FC52F00A291C2 /* ShadowProfilePicture-43.png */; };
 		C4BE6700157FC52F00A291C2 /* ShadowProfilePicture-43@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE66FA157FC52F00A291C2 /* ShadowProfilePicture-43@2x.png */; };
-		C4BE670D157FC7D000A291C2 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE6703157FC7CB00A291C2 /* Icon-72.png */; };
-		C4BE6714157FC7D000A291C2 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = C4BE670A157FC7CF00A291C2 /* iTunesArtwork */; };
 		C4BE676D157FC7F700A291C2 /* BackgroundComments.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE6715157FC7E000A291C2 /* BackgroundComments.png */; };
 		C4BE676E157FC7F700A291C2 /* BackgroundComments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE6716157FC7E000A291C2 /* BackgroundComments@2x.png */; };
 		C4BE676F157FC7F700A291C2 /* BackgroundFindFriendsCell.png in Resources */ = {isa = PBXBuildFile; fileRef = C4BE6717157FC7E000A291C2 /* BackgroundFindFriendsCell.png */; };
@@ -218,9 +215,7 @@
 		C463AF8F15BF1DAF007F834E /* AvatarPlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AvatarPlaceholder@2x.png"; sourceTree = "<group>"; };
 		C47DDDE41592761F002114F6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C47DDDE51592761F002114F6 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		C47DDDE815927631002114F6 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		C49F585F160285CC0027383F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = External/Parse.framework; sourceTree = "<group>"; };
-		C49F586116028A980027383F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C4A0B502156C5B9F00E48554 /* TTTTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		C4A0B503156C5B9F00E48554 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		C4A6A244158FF842003F64A8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -234,10 +229,6 @@
 		C4BE66F8157FC52E00A291C2 /* ShadowProfilePicture-35@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShadowProfilePicture-35@2x.png"; sourceTree = "<group>"; };
 		C4BE66F9157FC52F00A291C2 /* ShadowProfilePicture-43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShadowProfilePicture-43.png"; sourceTree = "<group>"; };
 		C4BE66FA157FC52F00A291C2 /* ShadowProfilePicture-43@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShadowProfilePicture-43@2x.png"; sourceTree = "<group>"; };
-		C4BE6701157FC7CA00A291C2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		C4BE6702157FC7CB00A291C2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		C4BE6703157FC7CB00A291C2 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
-		C4BE670A157FC7CF00A291C2 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		C4BE6715157FC7E000A291C2 /* BackgroundComments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundComments.png; sourceTree = "<group>"; };
 		C4BE6716157FC7E000A291C2 /* BackgroundComments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundComments@2x.png"; sourceTree = "<group>"; };
 		C4BE6717157FC7E000A291C2 /* BackgroundFindFriendsCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundFindFriendsCell.png; sourceTree = "<group>"; };
@@ -825,12 +816,6 @@
 			isa = PBXGroup;
 			children = (
 				7460D3AD1565557A00F755E4 /* Assets */,
-				C4BE6701157FC7CA00A291C2 /* Default.png */,
-				C4BE6702157FC7CB00A291C2 /* Default@2x.png */,
-				C49F586116028A980027383F /* Default-568h@2x.png */,
-				C4BE6703157FC7CB00A291C2 /* Icon-72.png */,
-				C4BE670A157FC7CF00A291C2 /* iTunesArtwork */,
-				C47DDDE815927631002114F6 /* iTunesArtwork@2x */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
@@ -910,8 +895,6 @@
 				C4BE66FE157FC52F00A291C2 /* ShadowProfilePicture-35@2x.png in Resources */,
 				C4BE66FF157FC52F00A291C2 /* ShadowProfilePicture-43.png in Resources */,
 				C4BE6700157FC52F00A291C2 /* ShadowProfilePicture-43@2x.png in Resources */,
-				C4BE670D157FC7D000A291C2 /* Icon-72.png in Resources */,
-				C4BE6714157FC7D000A291C2 /* iTunesArtwork in Resources */,
 				C4BE676D157FC7F700A291C2 /* BackgroundComments.png in Resources */,
 				C4BE676E157FC7F700A291C2 /* BackgroundComments@2x.png in Resources */,
 				C4BE676F157FC7F700A291C2 /* BackgroundFindFriendsCell.png in Resources */,
@@ -992,7 +975,6 @@
 				C4BE67C4157FC7F700A291C2 /* TitleFindFriends@2x.png in Resources */,
 				C4BE67C7157FC8F600A291C2 /* TextFieldComment.png in Resources */,
 				C4BE67C8157FC8F600A291C2 /* TextFieldComment@2x.png in Resources */,
-				C47DDDE915927631002114F6 /* iTunesArtwork@2x in Resources */,
 				C463AF9015BF1DAF007F834E /* AvatarPlaceholder.png in Resources */,
 				C463AF9115BF1DAF007F834E /* AvatarPlaceholder@2x.png in Resources */,
 				C7182D7E167879C6006AE695 /* hackitlogo.png in Resources */,
@@ -1138,7 +1120,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Raymond S (MTCCDFWKA5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Raymond S";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1151,7 +1133,7 @@
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "e-compass";
-				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
+				PROVISIONING_PROFILE = "E52CA678-A01E-4A74-820D-784A02376C71";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1177,8 +1159,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Raymond S (MTCCDFWKA5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Parse Inc";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Raymond S";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Raymond S";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1192,8 +1174,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "e-compass";
-				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6A5A958-17C2-4AC8-A515-A27933509394";
+				PROVISIONING_PROFILE = "E52CA678-A01E-4A74-820D-784A02376C71";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E52CA678-A01E-4A74-820D-784A02376C71";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1220,7 +1202,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Raymond S (MTCCDFWKA5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Parse Inc";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Raymond S (MTCCDFWKA5)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1235,7 +1217,7 @@
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "e-compass";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "33A2D497-75AF-4AEC-9E3E-2126A76EAED4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "47273C53-4F11-4481-85E9-C9B377AA8BF2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
