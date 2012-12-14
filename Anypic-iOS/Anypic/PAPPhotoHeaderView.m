@@ -144,10 +144,11 @@
     
     if (!added) {
         added = YES;
-    myLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x+150,self.bounds.origin.y,60,30)];
+		myLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.bounds.origin.x+120,self.bounds.origin.y,100,30)];
     
-    myLabel.backgroundColor = self.backgroundColor;
-    [self addSubview:myLabel];
+		myLabel.backgroundColor = self.backgroundColor;
+		myLabel.font = [UIFont fontWithName:@"Helvetica" size:10];
+		[self addSubview:myLabel];
     }
     myLabel.text = title;
 }
