@@ -186,6 +186,7 @@
 		C78BB8DA16787E21004F86D6 /* PAWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7182D78167879B6006AE695 /* PAWLoginViewController.xib */; };
 		C7B635FE1679C7F00078FBAA /* default_profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7B635FD1679C7EF0078FBAA /* default_profile.jpg */; };
 		C7C8BA1C1678AD8A00BB9FA6 /* PAWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */; };
+		C7EF8512167ACB980015AA14 /* e-compass.png in Resources */ = {isa = PBXBuildFile; fileRef = C7EF8511167ACB980015AA14 /* e-compass.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -421,6 +422,7 @@
 		C7B635FD1679C7EF0078FBAA /* default_profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_profile.jpg; sourceTree = "<group>"; };
 		C7C8BA1A1678AD8A00BB9FA6 /* PAWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PAWAppDelegate.h; path = Anypic/PAWAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C7C8BA1B1678AD8A00BB9FA6 /* PAWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAWAppDelegate.m; path = Anypic/PAWAppDelegate.m; sourceTree = SOURCE_ROOT; };
+		C7EF8511167ACB980015AA14 /* e-compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e-compass.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -682,6 +684,7 @@
 		74A504E51565F17E00CFA4E3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C7EF8511167ACB980015AA14 /* e-compass.png */,
 				67E7699A16788EAC006112B6 /* Button.png */,
 				C7182D7C167879C5006AE695 /* hackitlogo.png */,
 				C7182D76167879B6006AE695 /* PAWLoginViewController.h */,
@@ -1044,6 +1047,7 @@
 				6786AAE61679A4F8000D78AE /* PAWWallViewController.xib in Resources */,
 				C7B635FE1679C7F00078FBAA /* default_profile.jpg in Resources */,
 				C7496FBE1679F3B1008B54A8 /* icon_followers@114.png in Resources */,
+				C7EF8512167ACB980015AA14 /* e-compass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
