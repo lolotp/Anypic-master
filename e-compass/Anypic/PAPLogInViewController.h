@@ -1,0 +1,3 @@
+@interface PAPLogInViewController : PFLogInViewController
+
+@end
