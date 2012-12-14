@@ -196,7 +196,7 @@
 		092354B613A1D83C00DA740F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		095ACE8513C68EA300566243 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		099CCEAC13F9E3760039A464 /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
-		09ABC06D13A1D52D009C3FCF /* HackIt!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackIt!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09ABC06D13A1D52D009C3FCF /* e-compass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-compass.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		09ABC07113A1D52D009C3FCF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		09ABC07313A1D52D009C3FCF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		09ABC07513A1D52D009C3FCF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -459,7 +459,7 @@
 			children = (
 				C7496FBD1679F3B1008B54A8 /* icon_followers@114.png */,
 				C7496FBB1679F1D9008B54A8 /* icon_followers@2x.png */,
-				09ABC07713A1D52D009C3FCF /* Anypic */,
+				09ABC07713A1D52D009C3FCF /* e-compass */,
 				C4A0B4FF156C5B9F00E48554 /* External */,
 				09ABC07013A1D52D009C3FCF /* Frameworks */,
 				09ABC06E13A1D52D009C3FCF /* Products */,
@@ -469,7 +469,7 @@
 		09ABC06E13A1D52D009C3FCF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				09ABC06D13A1D52D009C3FCF /* HackIt!.app */,
+				09ABC06D13A1D52D009C3FCF /* e-compass.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -502,7 +502,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		09ABC07713A1D52D009C3FCF /* Anypic */ = {
+		09ABC07713A1D52D009C3FCF /* e-compass */ = {
 			isa = PBXGroup;
 			children = (
 				C4A89497155879FC00DC57D3 /* Views */,
@@ -526,7 +526,7 @@
 				6786AB0F1679A725000D78AE /* PAWPost.h */,
 				6786AB101679A725000D78AE /* PAWPost.m */,
 			);
-			name = Anypic;
+			name = "e-compass";
 			path = ParseStarterProject;
 			sourceTree = "<group>";
 		};
@@ -895,7 +895,7 @@
 			);
 			name = "e-compass";
 			productName = ParseStarterProject;
-			productReference = 09ABC06D13A1D52D009C3FCF /* HackIt!.app */;
+			productReference = 09ABC06D13A1D52D009C3FCF /* e-compass.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1171,7 +1171,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "HackIt!";
+				PRODUCT_NAME = "e-compass";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1194,7 +1194,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "HackIt!";
+				PRODUCT_NAME = "e-compass";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -1235,7 +1235,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "HackIt!";
+				PRODUCT_NAME = "e-compass";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6A5A958-17C2-4AC8-A515-A27933509394";
 				VALIDATE_PRODUCT = YES;
@@ -1277,7 +1277,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_NAME = "HackIt!";
+				PRODUCT_NAME = "e-compass";
 				PROVISIONING_PROFILE = "2724A0AF-6A2C-4956-85F6-0FA65B107F8B";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "33A2D497-75AF-4AEC-9E3E-2126A76EAED4";
 				VALIDATE_PRODUCT = YES;

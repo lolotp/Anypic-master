@@ -61,7 +61,7 @@ void uncaughtExceptionHandler(NSException *exception);
 {
 	// Go to the welcome screen and have them log in or create an account.
 	PAWWelcomeViewController *welcomeViewController = [[PAWWelcomeViewController alloc] initWithNibName:@"PAWWelcomeViewController" bundle:nil];
-	welcomeViewController.title = @"Welcome to HackIt!";
+	welcomeViewController.title = @"Welcome to e-compass!";
 	
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
 	navController.navigationBarHidden = YES;
